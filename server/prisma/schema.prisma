@@ -1,0 +1,96 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// Empoyees
+model User {
+  id          Int          @id @default(autoincrement())
+  email       String       @unique
+  firstName   String
+  lastName    String
+  admin       Boolean      @default(false)
+  enabled     Boolean      @default(true)
+  createdAt   DateTime     @default(now())
+  assignments Assignment[]
+  formEntries FormEntry[]
+}
+
+// Employees are assigned a room group on a certain date
+model Assignment {
+  id             Int         @id @default(autoincrement())
+  assignmentDate DateTime
+  userId         Int
+  roomGroupId    Int
+  user           User        @relation(fields: [userId], references: [id])
+  roomGroup      RoomGroup   @relation(fields: [roomGroupId], references: [id])
+  formEntries    FormEntry[]
+  lampEntries    LampEntry[]
+}
+
+model RoomGroup {
+  id         Int          @id @default(autoincrement())
+  groupName  String
+  Assignment Assignment[]
+  rooms      Room[]
+}
+
+model Room {
+  id          Int           @id @default(autoincrement())
+  roomName    String
+  roomGroupId Int
+  enabled     Boolean       @default(true)
+  roomGroup   RoomGroup     @relation(fields: [roomGroupId], references: [id])
+  features    RoomFeature[]
+  projectors  Projector[]
+}
+
+// One employee submits one form per room within an assignment
+model FormEntry {
+  id           Int        @id @default(autoincrement())
+  entryTime    DateTime   @default(now())
+  assignmentId Int
+  authorId     Int
+  assignment   Assignment @relation(fields: [assignmentId], references: [id])
+  author       User       @relation(fields: [authorId], references: [id])
+}
+
+model RoomFeature {
+  id        Int     @id @default(autoincrement())
+  roomId    Int
+  featureId Int
+  room      Room    @relation(fields: [roomId], references: [id])
+  feature   Feature @relation(fields: [featureId], references: [id])
+}
+
+model Feature {
+  id          Int           @id @default(autoincrement())
+  featureName String
+  category    String?
+  rooms       RoomFeature[]
+}
+
+model Projector {
+  id            Int         @id @default(autoincrement())
+  projectorName String?
+  roomId        Int
+  enabled       Boolean     @default(true)
+  room          Room        @relation(fields: [roomId], references: [id])
+  lampEntries   LampEntry[]
+}
+
+model LampEntry {
+  id           Int        @id @default(autoincrement())
+  assignmentId Int
+  hours        Int
+  projectorId  Int
+  assignment   Assignment @relation(fields: [assignmentId], references: [id])
+  projector    Projector  @relation(fields: [projectorId], references: [id])
+}
