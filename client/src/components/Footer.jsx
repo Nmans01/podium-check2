@@ -1,8 +1,11 @@
+import { A } from "@solidjs/router";
 
 function Footer() {
 
     return (
-        <div>Footer</div>
+        <footer class="p-2 pt-0 mx-auto text-sm">
+        <A href="/about">About Lighthouse Podium Check</A>
+        </footer>
     );
 }
 export default Footer;
