@@ -22,6 +22,15 @@ let AppService = class AppService {
     getHello() {
         return 'Hello World!';
     }
+    getMessage() {
+        return {
+            text: "Test",
+            actions: [{
+                    text: "Do test",
+                    ref: "/test"
+                }]
+        };
+    }
 };
 AppService = __decorate([
     (0, common_1.Injectable)(),

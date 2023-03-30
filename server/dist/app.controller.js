@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppController = void 0;
 const common_1 = require("@nestjs/common");
 const app_service_1 = require("./app.service");
+const message_1 = require("./dtos/message");
 let AppController = class AppController {
     constructor(appService) {
         this.appService = appService;
@@ -21,6 +22,9 @@ let AppController = class AppController {
     }
     getUsers() {
         return this.appService.getUsers();
+    }
+    getMessage() {
+        return this.appService.getMessage();
     }
 };
 __decorate([
@@ -35,6 +39,12 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Object)
 ], AppController.prototype, "getUsers", null);
+__decorate([
+    (0, common_1.Get)('message'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", message_1.MessageDto)
+], AppController.prototype, "getMessage", null);
 AppController = __decorate([
     (0, common_1.Controller)('api'),
     __metadata("design:paramtypes", [app_service_1.AppService])
