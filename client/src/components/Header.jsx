@@ -10,6 +10,7 @@ function Header() {
             <nav class="justify-center flex gap-3 flex-wrap">
                 <A href="/form" class="hover:underline">Form</A>
                 <A href="/assignments" class="hover:underline">Assignments</A>
+                <A href="/insights" class="hover:underline">Insights</A>
                 <A href="/admin" class="hover:underline">Admin</A>
             </nav>
             <div class="flex justify-end">

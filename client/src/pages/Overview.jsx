@@ -1,11 +1,15 @@
 import { createSignal, onMount } from "solid-js";
+import { A } from "@solidjs/router";
 import { getMessage } from "../utils/getMessage";
 
 function Overview() {
 
     const [message, setMessage] = createSignal({
         text:"Loading...",
-        actions:[]
+        actions:[{
+            text:`About this site`,
+            ref:"#"
+        }]
     });
 
     onMount(async () => {
@@ -21,7 +25,7 @@ function Overview() {
                 </p>
                 <div class="flex gap-2">
                     {message().actions.map((action)=>
-                    <a href={action.ref} class="bg-slate-300 text-slate-900 p-2 text-sm rounded-sm hover:brightness-90 active:brightness-75">{action.text}</a>
+                    <A href={action.ref} class="bg-slate-300 text-slate-900 p-2 text-sm rounded-sm hover:brightness-90 active:brightness-75">{action.text}</A>
                     )}
                 </div>
             </section>

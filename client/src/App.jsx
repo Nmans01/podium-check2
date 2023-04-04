@@ -1,5 +1,6 @@
 import { Routes, Route } from "@solidjs/router";
 import { lazy } from "solid-js";
+import Insights from "./pages/Insights";
 const Header      = lazy(() => import('./components/Header'));
 const Footer      = lazy(() => import('./components/Footer'));
 const Overview    = lazy(() => import('./pages/Overview'));
@@ -32,6 +33,7 @@ function App() {
         <Route path="/"            element={<Page><Overview/></Page>}/>
         <Route path="/about"       element={<Page><About/></Page>}/>
         <Route path="/assignments" element={<Page><Assignments/></Page>}/>
+        <Route path="/insights" element={<Page><Insights/></Page>}/>
         <Route path="/admin"       element={<Page><Admin/></Page>}/>
         <Route path="/form"        element={<Page><Form/></Page>}/>
         <Route path="/login"       element={<Modul><Login/></Modul>}/>
