@@ -17,10 +17,12 @@ function Login() {
             <div class="grid grid-flow-row items-end gap-6 h-full py-12 w-[272px]">
                 <h2 class="text-2xl justify-self-center self-start">Log in</h2>
                 {validEmail() || <p class=" justify-self-center text-red-800">Invalid email.</p>}
-                <div class="relative border-slate-700 border-solid border-2 p-2 pt-4">
-                    <input class="bg-slate-300" type="text" />
-                    <span class="absolute top-[-.7rem] left-[.1rem] bg-slate-300 px-1">Email</span>
-                </div>
+                <label htmlFor="test" class="hover:cursor-text">
+                    <div class="relative border-slate-700 border-solid border-2 p-2 pt-4">
+                        <input id="test" class="bg-slate-300" type="text" />
+                        <span class="absolute top-[-.7rem] left-[.1rem] bg-slate-300 px-1">Email</span>
+                    </div>
+                </label>
                 <div class="flex flex-row justify-between w-full">
                     <button
                         onClick={() => navigate(-1)}
