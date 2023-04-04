@@ -18,6 +18,6 @@ export class AppController {
 
   @Get('message')
   getMessage(): MessageDto {
-    return this.appService.getMessage();
+    return this.appService.getRandomMessage();
   }
 }   

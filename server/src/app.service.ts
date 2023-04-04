@@ -14,6 +14,22 @@ export class AppService {
     return 'Hello World!';
   }
 
+  getRandomMessage(): MessageDto {
+    return{
+      text:"Sample message",
+      actions: [
+        {
+          text: "Sample action",
+          ref: "/about"
+        },
+        {
+          text: "Different action",
+          ref: "#"
+        }
+      ]
+    };
+  }
+
   getMessage(): MessageDto {
 
     /*  Sign in to get started.
@@ -46,6 +62,8 @@ export class AppService {
         [Assign groups]
         [View past forms]
     */
+
+    // TODO: get user object from JWT and fill in conditions
 
     let out: MessageDto;
 

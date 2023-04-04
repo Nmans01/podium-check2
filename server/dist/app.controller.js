@@ -24,7 +24,7 @@ let AppController = class AppController {
         return this.appService.getUsers();
     }
     getMessage() {
-        return this.appService.getMessage();
+        return this.appService.getRandomMessage();
     }
 };
 __decorate([

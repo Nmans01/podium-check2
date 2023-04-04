@@ -5,5 +5,6 @@ export declare class AppService {
     constructor(prisma: PrismaService);
     getUsers(): any;
     getHello(): string;
+    getRandomMessage(): MessageDto;
     getMessage(): MessageDto;
 }
