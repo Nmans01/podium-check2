@@ -15,19 +15,24 @@ function Insights() {
   return (
     <div>
       <label htmlFor="building-select">Select a building:</label>
-
-      // TODO buildings will need to be alphabetical
       <select id="building-select" value={building} onChange={handleBuildingChange}>
         <option value="">-- Select a building --</option>
-        <option value="Nicarry">Building 1</option>
-        <option value="Esbenshade">Building 2</option>
-        <option value="Hoover">Building 3</option>
+        <option value="BSC">BSC</option>
+        <option value="Esbenshade">Esbenshade</option>
+        <option value="Hoover">Hoover</option>
+        <option value="Lyet">Lyet</option>
+        <option value="Musser">Musser</option>
+        <option value="Nicarry">Nicarry</option>
+        <option value="Steinman">Steinman</option>
+        <option value="Thompson">Thompson</option>
+        <option value="Wenger">Wenger</option>
+        <option value="Zug">Zug</option>
       </select>
 
       <label htmlFor="room-select">Select a room:</label>
       <select id="room-select" value={room} onChange={handleRoomChange}>
         <option value="">-- Select a room --</option>
-        {building === "building-1" && (
+        {building === "Nicarry" && (
           <>
             <option value="N104">104</option>
             <option value="N106">106</option>
@@ -36,11 +41,12 @@ function Insights() {
             <option value="N131">131</option>
             <option value="N201">201</option>
             <option value="N202">202</option>
-            <option value="N203-lab">203</option>
+            <option value="N203-lab">203-lab</option>
             <option value="N204">204</option>
             <option value="N205">205</option>
+            <option value="N206">206</option>
             <option value="N207">207</option>
-            <option value="N208-lab">208</option>
+            <option value="N208-lab">208-lab</option>
             <option value="N210">210</option>
             <option value="N212">212</option>
             <option value="N228">228</option>
@@ -49,16 +55,20 @@ function Insights() {
             <option value="N234">234</option>
           </>
         )}
-        {building === "building-2" && (
+        {building === "Hoover" && (
           <>
-            <option value="room-3">Room 3</option>
-            <option value="room-4">Room 4</option>
-          </>
-        )}
-        {building === "building-3" && (
-          <>
-            <option value="room-5">Room 5</option>
-            <option value="room-6">Room 6</option>
+            <option value="H107">107</option>
+            <option value="H108-lab">108-lab</option>
+            <option value="H109">109</option>
+            <option value="H110">110</option>
+            <option value="H111-lab">111-lab</option>
+            <option value="H112">112</option>
+            <option value="H114">114</option>
+            <option value="H211">211</option>
+            <option value="H212">212</option>
+            <option value="H213">213</option>
+            <option value="H214">214</option>
+            <option value="H215">215</option>
           </>
         )}
       </select>
