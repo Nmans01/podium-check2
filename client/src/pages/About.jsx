@@ -10,6 +10,9 @@ function About() {
             <p>
                 Following the goal of the original site, Lighthouse Podium Check serves to improve upon the ITS department's process for completing podium checks, which ensure that classroom audio-video technology is functioning properly across campus.
             </p>
+            <p>
+                It is named "Lighthouse" because it guides the way to keeping the campus AV equipment functioning properly for users
+            </p>
         </main>
     );
 }
