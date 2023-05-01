@@ -8,7 +8,7 @@ function About() {
                 This site is a reconstruction of the orginal podium check site, which was created by Nate Mansfield, Nick Nolt, and two others as a semester project for CS341. As the original site was never fully functional, our aim with this site was to complete the missing features using more modern tools.
             </p>
             <p>
-                Following the goal of the original site, Lighthouse Podium Check serves to improve upon the ITS department's process for completing podium checks, which ensure that classroom audio-video technology is functioning properly.
+                Following the goal of the original site, Lighthouse Podium Check serves to improve upon the ITS department's process for completing podium checks, which ensure that classroom audio-video technology is functioning properly across campus.
             </p>
         </main>
     );
