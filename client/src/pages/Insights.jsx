@@ -1,5 +1,14 @@
 import { useState } from "react";
 
+return (
+    <main class="bg-slate-700 mx-2 p-2 rounded-md flex flex-col gap-2 max-w-4xl justify-self-center">
+        <h2 class="text-2xl">About</h2>
+        <p>
+            Testing. Welcome to the page!
+        </p>
+    </main>
+);
+
 function Insights() {
   const [building, setBuilding] = useState("");
   const [room, setRoom] = useState("");
