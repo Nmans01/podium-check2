@@ -5,7 +5,7 @@ function Form() {
     return (
         <main class="bg-slate-700 mx-2 p-2 rounded-md flex flex-col gap-2">
             <h2 class="text-4xl">Select Form</h2>
-            <button style="background-color:#788693; height:100px; width:300px; font-size: 50px;">E281</button>
+            <button style="background-color:#788693; height:100px; width:300px; font-size: 50px; postition:relative">E281</button>
         </main>
     );
 }
