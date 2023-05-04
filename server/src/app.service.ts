@@ -15,8 +15,8 @@ export class AppService {
   }
 
   getRandomMessage(): MessageDto {
-    return{
-      text:"Sample message",
+    return {
+      text: "Sample message",
       actions: [
         {
           text: "Sample action",
@@ -72,7 +72,7 @@ export class AppService {
       if (true) {
         // user has an assignment today
         let rooms = "";
-        let employees = "";
+        let employees = ""; //this.prisma.
 
         out.text = `Your assignment today is to rooms ${rooms}, with ${employees}.`;
         out.actions = [];
