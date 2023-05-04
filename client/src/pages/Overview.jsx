@@ -17,12 +17,12 @@ function Overview() {
             <section class="rounded-sm p-2 flex flex-col gap-5 text-3xl">
                 <span class="text-8xl font-bold">Welcome back!</span>
                 <p>
-                    {messageGet().text}
+                    {messageGet() ? messageGet().text: ""}
                 </p>
                 <div class="flex gap-2">
-                    {messageGet().actions.map((action) =>
+                    {messageGet() ? messageGet().actions.map((action) =>
                         <A href={action.ref} class="bg-slate-300 text-slate-900 p-2 text-sm rounded-sm hover:brightness-90 active:brightness-75">{action.text}</A>
-                    )}
+                    ) : ""}
                 </div>
             </section>
         </main>
