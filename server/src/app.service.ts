@@ -6,15 +6,11 @@ import { MessageDto } from './dtos/message';
 export class AppService {
   constructor(private prisma: PrismaService) { }
 
-  getUsers(): any {
-    return this.prisma.user.findMany();
-  }
-
   getHello(): string {
     return 'Hello World!';
   }
 
-  getRandomMessage(): MessageDto {
+  getSampleMessage(): MessageDto {
     return {
       text: "Sample message",
       actions: [
@@ -30,7 +26,9 @@ export class AppService {
     };
   }
 
-  getMessage(): MessageDto {
+  getMessage(email: string): MessageDto {
+
+    // TODO: get user object from JWT and fill in conditions
 
     /*  Sign in to get started.
         [Sign in]
@@ -62,8 +60,6 @@ export class AppService {
         [Assign groups]
         [View past forms]
     */
-
-    // TODO: get user object from JWT and fill in conditions
 
     let out: MessageDto;
 
@@ -103,14 +99,13 @@ export class AppService {
         }
       } else if (true) {
         // no podium checks today, but podium checks upcoming
+          let date = "";
         if (true) {
           // all groups are set
-          let date = "";
           out.text = `The next round of podium checks is scheduled for ${date}. All groups have been assigned.`;
           out.actions = [];
         } else {
           // not all groups are set
-          let date = "";
           out.text = `The next round of podium checks is scheduled for ${date}. Some groups still need to be assigned.`;
           out.actions = [];
         }
