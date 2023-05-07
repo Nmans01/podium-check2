@@ -6,4 +6,10 @@ export declare class AppController {
     getHello(): string;
     getUsers(): any;
     getMessage(): MessageDto;
+    getForms(): any;
+    getFormByID(): any;
+    postForm(): any;
+    getAssignmentsByDate(): any;
+    postAssignmentsByDate(): any;
+    getInsights(): any;
 }

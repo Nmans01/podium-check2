@@ -11,9 +11,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppController = void 0;
 const common_1 = require("@nestjs/common");
-const app_service_1 = require("./app.service");
 const message_1 = require("./dtos/message");
-let AppController = class AppController {
+(0, common_1.Controller)('api');
+class AppController {
     constructor(appService) {
         this.appService = appService;
     }
@@ -26,7 +26,25 @@ let AppController = class AppController {
     getMessage() {
         return this.appService.getRandomMessage();
     }
-};
+    getForms() {
+        return this.appService.getHello();
+    }
+    getFormByID() {
+        return this.appService.getHello();
+    }
+    postForm() {
+        return this.appService.getHello();
+    }
+    getAssignmentsByDate() {
+        return this.appService.getHello();
+    }
+    postAssignmentsByDate() {
+        return this.appService.getHello();
+    }
+    getInsights() {
+        return this.appService.getHello();
+    }
+}
 __decorate([
     (0, common_1.Get)(),
     __metadata("design:type", Function),
@@ -45,9 +63,41 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", message_1.MessageDto)
 ], AppController.prototype, "getMessage", null);
-AppController = __decorate([
-    (0, common_1.Controller)('api'),
-    __metadata("design:paramtypes", [app_service_1.AppService])
-], AppController);
+__decorate([
+    (0, common_1.Get)('forms'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Object)
+], AppController.prototype, "getForms", null);
+__decorate([
+    (0, common_1.Get)('forms/:id'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Object)
+], AppController.prototype, "getFormByID", null);
+__decorate([
+    (0, common_1.Post)('forms/:id'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Object)
+], AppController.prototype, "postForm", null);
+__decorate([
+    (0, common_1.Get)('assignments/:date'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Object)
+], AppController.prototype, "getAssignmentsByDate", null);
+__decorate([
+    (0, common_1.Post)('assignments/:date'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Object)
+], AppController.prototype, "postAssignmentsByDate", null);
+__decorate([
+    (0, common_1.Get)('insights'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Object)
+], AppController.prototype, "getInsights", null);
 exports.AppController = AppController;
 //# sourceMappingURL=app.controller.js.map
