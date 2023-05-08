@@ -15,8 +15,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppController = void 0;
 const common_1 = require("@nestjs/common");
 const app_service_1 = require("./app.service");
-const message_1 = require("./dtos/message");
 const user_service_1 = require("./user/user.service");
+const decorators_1 = require("./common/decorators");
 let AppController = class AppController {
     constructor(appService, userService) {
         this.appService = appService;
@@ -25,14 +25,14 @@ let AppController = class AppController {
     getHello() {
         return this.appService.getHello();
     }
-    getMessage(req) {
-        return this.appService.getSampleMessage();
+    getMessage(userId) {
+        return this.appService.getMessage(userId);
     }
-    getForms() {
-        return this.appService.getHello();
+    getForms(userId) {
+        return this.appService.getForms(userId);
     }
-    getFormByID() {
-        return this.appService.getHello();
+    getFormByID(roomName) {
+        return this.appService.getFormByID(roomName);
     }
     postForm() {
         return this.appService.getHello();
@@ -55,21 +55,23 @@ __decorate([
 ], AppController.prototype, "getHello", null);
 __decorate([
     (0, common_1.Get)('message'),
-    __param(0, (0, common_1.Req)()),
+    __param(0, (0, decorators_1.GetCurrentUserId)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Request]),
-    __metadata("design:returntype", message_1.MessageDto)
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", Promise)
 ], AppController.prototype, "getMessage", null);
 __decorate([
     (0, common_1.Get)('forms'),
+    __param(0, (0, decorators_1.GetCurrentUserId)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Object)
 ], AppController.prototype, "getForms", null);
 __decorate([
     (0, common_1.Get)('forms/:id'),
+    __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Object)
 ], AppController.prototype, "getFormByID", null);
 __decorate([

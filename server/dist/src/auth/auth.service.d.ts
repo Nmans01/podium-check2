@@ -1,14 +1,14 @@
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import { PrismaService } from 'nestjs-prisma';
-import { AuthDto } from './dto';
+import { AuthDto, SignupDto } from './dto';
 import { Tokens } from './types';
 export declare class AuthService {
     private prisma;
     private jwtService;
     private config;
     constructor(prisma: PrismaService, jwtService: JwtService, config: ConfigService);
-    signupLocal(dto: AuthDto): Promise<Tokens>;
+    signupLocal(dto: SignupDto): Promise<Tokens>;
     signinLocal(dto: AuthDto): Promise<Tokens>;
     logout(userId: number): Promise<boolean>;
     refreshTokens(userId: number, rt: string): Promise<Tokens>;

@@ -19,38 +19,60 @@ let AppService = class AppService {
     getHello() {
         return 'Hello World!';
     }
-    getSampleMessage() {
-        return {
-            text: "Sample message",
-            actions: [
-                {
-                    text: "Sample action",
-                    ref: "/about"
-                },
-                {
-                    text: "Different action",
-                    ref: "#"
-                }
-            ]
-        };
-    }
-    getMessage(email) {
-        let out;
-        if (true) {
-            if (true) {
-                let rooms = "";
-                let employees = "";
-                out.text = `Your assignment today is to rooms ${rooms}, with ${employees}.`;
-                out.actions = [];
+    async getMessage(id) {
+        let user = this.prisma.user.findFirst({
+            where: {
+                id
             }
-            else if (true) {
-                let datestring = "";
-                out.text = `You have nothing scheduled for today.\nYour next assignment is for ${datestring}.`;
+        });
+        let out = {
+            text: "",
+            actions: []
+        };
+        if (!user['admin']) {
+            let today = new Date();
+            today.setHours(0, 0, 0, 0);
+            let tomorrow = new Date(today.getDate() + 1);
+            let assignments = await this.prisma.assignment.findMany({
+                where: {
+                    userId: id,
+                    assignmentDate: {
+                        gte: today
+                    },
+                },
+                include: {
+                    roomGroup: {
+                        include: {
+                            rooms: true
+                        }
+                    }
+                },
+                orderBy: {
+                    assignmentDate: 'asc'
+                }
+            });
+            if (!assignments.length) {
+                out.text = "You have nothing scheduled for today.";
                 out.actions = [];
             }
             else {
-                out.text = "You have nothing scheduled for today.";
-                out.actions = [];
+                if (assignments[0].assignmentDate.getDate() < tomorrow.getDate()) {
+                    let rooms = assignments[0].roomGroup.groupName;
+                    let employees = "others";
+                    out.text = `Your assignment today is to ${rooms}, with ${employees}.`;
+                    out.actions = [
+                        {
+                            text: "Go to Forms",
+                            ref: "/forms"
+                        }
+                    ];
+                }
+                else {
+                    let datestring = assignments[0].assignmentDate;
+                    out.text = `You have nothing scheduled for today.
+          Your next assignment is for ${datestring}.`;
+                    out.actions = [];
+                }
             }
         }
         else if (true) {
@@ -82,6 +104,46 @@ let AppService = class AppService {
             }
         }
         return out;
+    }
+    getForms(id) {
+        let rooms = this.prisma.assignment.findFirst({
+            where: {
+                userId: id
+            },
+            select: {
+                roomGroup: {
+                    select: {
+                        groupName: true,
+                        rooms: {
+                            select: {
+                                roomName: true
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        return rooms;
+    }
+    getFormByID(roomName) {
+        let roomFeatures = this.prisma.roomFeature.findMany({
+            where: {
+                room: {
+                    roomName
+                }
+            },
+            select: {
+                feature: true
+            }
+        });
+        let projectors = this.prisma.projector.findMany({
+            where: {
+                room: {
+                    roomName
+                }
+            }
+        });
+        return Promise.all([roomFeatures, projectors]);
     }
 };
 AppService = __decorate([

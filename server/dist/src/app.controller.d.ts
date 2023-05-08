@@ -6,9 +6,9 @@ export declare class AppController {
     private userService;
     constructor(appService: AppService, userService: UserService);
     getHello(): string;
-    getMessage(req: Request): MessageDto;
-    getForms(): any;
-    getFormByID(): any;
+    getMessage(userId: number): Promise<MessageDto>;
+    getForms(userId: number): any;
+    getFormByID(roomName: string): any;
     postForm(): any;
     getAssignmentsByDate(): any;
     postAssignmentsByDate(): any;

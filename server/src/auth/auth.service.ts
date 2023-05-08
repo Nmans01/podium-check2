@@ -5,7 +5,7 @@ import { PrismaClientKnownRequestError } from '@prisma/client/runtime';
 import * as argon from 'argon2';
 import { PrismaService } from 'nestjs-prisma';
 
-import { AuthDto } from './dto';
+import { AuthDto, SignupDto } from './dto';
 import { JwtPayload, Tokens } from './types';
 
 @Injectable()
@@ -16,7 +16,7 @@ export class AuthService {
     private config: ConfigService,
   ) {}
 
-  async signupLocal(dto: AuthDto): Promise<Tokens> {
+  async signupLocal(dto: SignupDto): Promise<Tokens> {
     const hash = await argon.hash(dto.password);
 
     const user = await this.prisma.user
@@ -44,6 +44,7 @@ export class AuthService {
   }
 
   async signinLocal(dto: AuthDto): Promise<Tokens> {
+    console.log(JSON.stringify(dto));
     const user = await this.prisma.user.findUnique({
       where: {
         email: dto.email,

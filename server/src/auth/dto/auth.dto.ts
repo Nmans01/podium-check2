@@ -5,11 +5,19 @@ export class AuthDto {
   @IsString()
   email: string;
 
+  @IsNotEmpty()
+  @IsString()
+  password: string;
+}
+
+export class SignupDto {
+  @IsNotEmpty()
+  @IsString()
+  email: string;
 
   @IsNotEmpty()
   @IsString()
   firstName: string;
-
 
   @IsNotEmpty()
   @IsString()
@@ -19,3 +27,4 @@ export class AuthDto {
   @IsString()
   password: string;
 }
+

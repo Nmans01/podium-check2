@@ -4,6 +4,16 @@ export declare class AppService {
     private prisma;
     constructor(prisma: PrismaService);
     getHello(): string;
-    getSampleMessage(): MessageDto;
-    getMessage(email: string): MessageDto;
+    getMessage(id: number): Promise<MessageDto>;
+    getForms(id: any): import(".prisma/client").Prisma.Prisma__AssignmentClient<{
+        roomGroup: {
+            rooms: {
+                roomName: string;
+            }[];
+            groupName: string;
+        };
+    }, never>;
+    getFormByID(roomName: string): Promise<[{
+        feature: import(".prisma/client").Feature;
+    }[], import(".prisma/client").Projector[]]>;
 }
