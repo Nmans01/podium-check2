@@ -52,8 +52,8 @@ function Overview() {
     };
 
     return (
-        <main class=" bg-slate-700 mx-2 p-2 rounded-md grid grid-flow-row grid-rows-1 items-center gap-2">
-            <section class="rounded-sm p-2 flex flex-col gap-5 text-3xl">
+        <main class=" bg-slate-700 mx-2 rounded-md grid grid-flow-row grid-rows-1 items-center gap-2 bg-[url(https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/128d4f140686797.6245d4d5ec11c.png)] bg-cover bg-blend-luminosity bg-opacity-90 backdrop-blur-md">
+            <section class="rounded-sm p-4 flex flex-col gap-5 text-3xl h-full justify-center backdrop-blur-lg bg-slate-700 bg-opacity-70">
                 <span class="text-8xl font-bold">Welcome back!</span>
                 <p>
                     {test() ? test().text : ""}
