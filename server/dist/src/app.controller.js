@@ -37,6 +37,12 @@ let AppController = class AppController {
     postForm() {
         return this.appService.getHello();
     }
+    getRoomGroups() {
+        return this.appService.getRoomGroups();
+    }
+    getUserFirstNames() {
+        return this.appService.getUserFirstNames();
+    }
     getAssignmentsByDate() {
         return this.appService.getHello();
     }
@@ -80,6 +86,18 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Object)
 ], AppController.prototype, "postForm", null);
+__decorate([
+    (0, common_1.Get)('groups'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Object)
+], AppController.prototype, "getRoomGroups", null);
+__decorate([
+    (0, common_1.Get)('users'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Object)
+], AppController.prototype, "getUserFirstNames", null);
 __decorate([
     (0, common_1.Get)('assignments/:date'),
     __metadata("design:type", Function),

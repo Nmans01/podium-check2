@@ -41,6 +41,17 @@ export class AppController {
     return this.appService.getHello();
   }
 
+  @Get('groups')
+  getRoomGroups(): any {
+    return this.appService.getRoomGroups();
+  }
+
+  @Get('users')
+  getUserFirstNames(): any {
+    return this.appService.getUserFirstNames();
+  }
+
+  // UNFINISHED STARTS HERE
   // For assignments of given date, return room group, along with employees that have been assigned to each room group
   @Get('assignments/:date')
   getAssignmentsByDate(): any {

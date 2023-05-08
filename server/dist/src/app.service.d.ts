@@ -16,4 +16,8 @@ export declare class AppService {
     getFormByID(roomName: string): Promise<[{
         feature: import(".prisma/client").Feature;
     }[], import(".prisma/client").Projector[]]>;
+    getRoomGroups(): import(".prisma/client").Prisma.PrismaPromise<import(".prisma/client").RoomGroup[]>;
+    getUserFirstNames(): import(".prisma/client").Prisma.PrismaPromise<{
+        firstName: string;
+    }[]>;
 }

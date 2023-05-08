@@ -10,6 +10,8 @@ export declare class AppController {
     getForms(userId: number): any;
     getFormByID(roomName: string): any;
     postForm(): any;
+    getRoomGroups(): any;
+    getUserFirstNames(): any;
     getAssignmentsByDate(): any;
     postAssignmentsByDate(): any;
     getInsights(): any;

@@ -59,7 +59,7 @@ let AppService = class AppService {
                 if (assignments[0].assignmentDate.getDate() < tomorrow.getDate()) {
                     let rooms = assignments[0].roomGroup.groupName;
                     let employees = "others";
-                    out.text = `Your assignment today is to ${rooms}, with ${employees}.`;
+                    out.text = `Your assignment today is to ${rooms}.`;
                     out.actions = [
                         {
                             text: "Go to Forms",
@@ -144,6 +144,16 @@ let AppService = class AppService {
             }
         });
         return Promise.all([roomFeatures, projectors]);
+    }
+    getRoomGroups() {
+        let groups = this.prisma.roomGroup.findMany();
+        return groups;
+    }
+    getUserFirstNames() {
+        let names = this.prisma.user.findMany({
+            select: { firstName: true }
+        });
+        return names;
     }
 };
 AppService = __decorate([

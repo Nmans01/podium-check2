@@ -60,7 +60,7 @@ function Overview() {
                 </p>
                 <div class="flex gap-2">
                     {test() ? test().actions.map((action) =>
-                        <A href={action.ref} class="bg-slate-300 text-slate-900 p-2 text-sm rounded-sm hover:brightness-90 active:brightness-75">{action.text}</A>
+                        <A href={action.ref} class="bg-slate-300 text-slate-900 p-3 rounded-sm hover:brightness-75 active:brightness-75">{action.text}</A>
                     ) : ""}
                 </div>
             </section>

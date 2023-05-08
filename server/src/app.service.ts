@@ -62,7 +62,8 @@ export class AppService {
           let rooms = assignments[0].roomGroup.groupName;
           let employees = "others"; //this.prisma.
 
-          out.text = `Your assignment today is to ${rooms}, with ${employees}.`;
+          out.text = `Your assignment today is to ${rooms}.`;
+          // add other employees to text
           out.actions = [
             {
               text: "Go to Forms",
@@ -155,6 +156,18 @@ export class AppService {
       }
     })
 
-    return Promise.all([roomFeatures,projectors]);
+    return Promise.all([roomFeatures, projectors]);
+  }
+
+  getRoomGroups() {
+    let groups = this.prisma.roomGroup.findMany();
+    return groups;
+  }
+
+  getUserFirstNames() {
+    let names = this.prisma.user.findMany({
+      select: { firstName: true }
+    });
+    return names;
   }
 }

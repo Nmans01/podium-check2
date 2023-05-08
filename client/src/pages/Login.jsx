@@ -21,7 +21,7 @@ function Login() {
     };
 
     function handleLogin() {
-        // Make a request to your backend to get a JWT token
+        // Make a request to backend to get a JWT token
         fetch(
             "http://localhost:3000/auth/local/signin",
             {

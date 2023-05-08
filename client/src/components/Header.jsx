@@ -19,8 +19,7 @@ function Header() {
                     class="hover:underline"
                     onClick={
                         () => {
-                            localStorage.setItem("accessToken", null);
-                            localStorage.setItem("refreshToken", null);
+                            localStorage.clear();
                             console.log("tokens cleared");
                         }}
                 >

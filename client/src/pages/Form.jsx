@@ -42,7 +42,7 @@ function Form() {
         <main class="bg-slate-700 mx-2 p-2 rounded-md flex flex-col gap-2">
             <h2 class="text-4xl mb-5">Form: {params.id}</h2>
             Features:
-            {room()
+            {!room.loading
                 ?
                 <div class="flex flex-col gap-3 text-xl justify-center bg-slate-400 rounded-md p-2 text-slate-900">
                     {
@@ -60,14 +60,12 @@ function Form() {
                             ""
                     }
                 </div>
-
-
                 :
                 " Loading..."
             }
             Projectors: 
-            {room() ?
-                <div class="flex flex-col gap-3 text-xl justify-center bg-slate-400 rounded-md p-2 text-slate-900">{room()[1]
+            {!room.loading ?
+                <div class="flex flex-col gap-3 text-xl justify-center bg-slate-400 rounded-md p-2 text-slate-900">{room()[1][0]
                     ?
                     room()[1].map(
                         (it) =>
@@ -77,10 +75,12 @@ function Form() {
 
                             </div>
                     )
-                    : ""}</div> : ""
+                    : "(no projectors)"}</div> : ""
             }
             <div class="flex justify-end px-8">
-                <A class="hover:underline" href="/forms">Submit</A>
+                {!room.loading
+                ?<A class="hover:underline" href="/forms" onClick={() => localStorage.setItem("room"+params.id,"done")}>Submit</A>
+                :""}
             </div>
         </main>
     );
