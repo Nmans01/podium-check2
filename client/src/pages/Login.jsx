@@ -67,7 +67,7 @@ function Login() {
                 </label>
                 <label htmlFor="password" class="hover:cursor-text">
                     <div class="relative border-slate-700 border-solid border-2 p-2 pt-4">
-                        <input id="password" class="bg-slate-300" type="text" onChange={updateFormField("password")} />
+                        <input id="password" class="bg-slate-300" type="password" onChange={updateFormField("password")} />
                         <span class="absolute top-[-.7rem] left-[.1rem] bg-slate-300 px-1">Password</span>
                     </div>
                 </label>
