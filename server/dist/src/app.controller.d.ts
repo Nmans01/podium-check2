@@ -1,11 +1,12 @@
 import { AppService } from './app.service';
 import { MessageDto } from './dtos/message';
+import { UserService } from './user/user.service';
 export declare class AppController {
-    private readonly appService;
-    constructor(appService: AppService);
+    private appService;
+    private userService;
+    constructor(appService: AppService, userService: UserService);
     getHello(): string;
-    getUsers(): any;
-    getMessage(): MessageDto;
+    getMessage(req: Request): MessageDto;
     getForms(): any;
     getFormByID(): any;
     postForm(): any;

@@ -16,13 +16,10 @@ let AppService = class AppService {
     constructor(prisma) {
         this.prisma = prisma;
     }
-    getUsers() {
-        return this.prisma.user.findMany();
-    }
     getHello() {
         return 'Hello World!';
     }
-    getRandomMessage() {
+    getSampleMessage() {
         return {
             text: "Sample message",
             actions: [
@@ -37,7 +34,7 @@ let AppService = class AppService {
             ]
         };
     }
-    getMessage() {
+    getMessage(email) {
         let out;
         if (true) {
             if (true) {
@@ -69,13 +66,12 @@ let AppService = class AppService {
                 }
             }
             else if (true) {
+                let date = "";
                 if (true) {
-                    let date = "";
                     out.text = `The next round of podium checks is scheduled for ${date}. All groups have been assigned.`;
                     out.actions = [];
                 }
                 else {
-                    let date = "";
                     out.text = `The next round of podium checks is scheduled for ${date}. Some groups still need to be assigned.`;
                     out.actions = [];
                 }

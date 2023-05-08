@@ -1,25 +1,24 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Controller, Get, Post, Req } from '@nestjs/common';
 import { AppService } from './app.service';
 import { MessageDto } from './dtos/message';
+import { UserService } from './user/user.service';
 
-Controller('api')
+@Controller('api')
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(
+    private appService: AppService,
+    private userService: UserService
+  ) { }
 
   @Get()
   getHello(): string {
     return this.appService.getHello();
   }
 
-  @Get('users')
-  getUsers(): any {
-    return this.appService.getUsers();
-  }
-
   // Return message based on user and user's context
   @Get('message')
-  getMessage(): MessageDto {
-    return this.appService.getRandomMessage();
+  getMessage(@Req() req: Request): MessageDto {
+    return this.appService.getSampleMessage();
   }
 
   // Return list of rooms that user is assigned to for the day (forms they need to complete/ have already completed)

@@ -8,23 +8,25 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppController = void 0;
 const common_1 = require("@nestjs/common");
+const app_service_1 = require("./app.service");
 const message_1 = require("./dtos/message");
-(0, common_1.Controller)('api');
-class AppController {
-    constructor(appService) {
+const user_service_1 = require("./user/user.service");
+let AppController = class AppController {
+    constructor(appService, userService) {
         this.appService = appService;
+        this.userService = userService;
     }
     getHello() {
         return this.appService.getHello();
     }
-    getUsers() {
-        return this.appService.getUsers();
-    }
-    getMessage() {
-        return this.appService.getRandomMessage();
+    getMessage(req) {
+        return this.appService.getSampleMessage();
     }
     getForms() {
         return this.appService.getHello();
@@ -44,7 +46,7 @@ class AppController {
     getInsights() {
         return this.appService.getHello();
     }
-}
+};
 __decorate([
     (0, common_1.Get)(),
     __metadata("design:type", Function),
@@ -52,15 +54,10 @@ __decorate([
     __metadata("design:returntype", String)
 ], AppController.prototype, "getHello", null);
 __decorate([
-    (0, common_1.Get)('users'),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", Object)
-], AppController.prototype, "getUsers", null);
-__decorate([
     (0, common_1.Get)('message'),
+    __param(0, (0, common_1.Req)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [Request]),
     __metadata("design:returntype", message_1.MessageDto)
 ], AppController.prototype, "getMessage", null);
 __decorate([
@@ -99,5 +96,10 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Object)
 ], AppController.prototype, "getInsights", null);
+AppController = __decorate([
+    (0, common_1.Controller)('api'),
+    __metadata("design:paramtypes", [app_service_1.AppService,
+        user_service_1.UserService])
+], AppController);
 exports.AppController = AppController;
 //# sourceMappingURL=app.controller.js.map
